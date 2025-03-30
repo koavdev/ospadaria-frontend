@@ -1,37 +1,41 @@
 <template>
     <div class="p-3 flex flex-col gap-3">
-        <MarketFilters @update:search="searchText = $event" />
-        <div class="w-full grid grid-cols-2 gap-3">
-            <MarketItem v-for="product in filteredProducts" :product="product"/>
+        <MarketFilters @update:search="updateSearchFilter" />
+        <div v-if="isLoading" class="w-full flex justify-center py-10">
+          <p>Carregando produtos...</p>
+        </div>
+        <div v-else-if="filteredProducts.length === 0" class="w-full flex justify-center py-10">
+          <p>Nenhum produto encontrado</p>
+        </div>
+        <div v-else class="w-full grid grid-cols-2 gap-3">
+            <MarketItem v-for="product in filteredProducts" :key="product.id" :product="product"/>
         </div>    
     </div>
     <MarketCartButton />
 </template>
 
 <script setup lang="ts">
-import Pastelina from "@/assets/images/pastelina.jpg"
-import { type IProduct } from "@/composables/useCart"
-import { ref, computed } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useProducts } from '@/composables/useProducts'
+import type { ProductCategory } from '@/lib/types'
 
-const searchText = ref('')
+const route = useRoute()
+const { filteredProducts, setFilters, fetchProducts, isLoading } = useProducts()
 
-const products: IProduct[] = [
-    { id: 1, name: "Pastelina", price: 4.50, image: Pastelina },
-    { id: 2, name: "Pastel de Carne", price: 6.00, image: Pastelina },
-    { id: 3, name: "Pastel de Queijo", price: 5.50, image: Pastelina },
-    { id: 4, name: "Pastel de Frango", price: 6.00, image: Pastelina },
-    { id: 5, name: "Coxinha", price: 4.00, image: Pastelina },
-    { id: 6, name: "Esfiha", price: 3.50, image: Pastelina },
-    { id: 7, name: "Kibe", price: 4.00, image: Pastelina },
-    { id: 8, name: "Risole", price: 3.50, image: Pastelina },
-]
+function updateSearchFilter(text: string) {
+  setFilters({ searchText: text })
+}
 
-const filteredProducts = computed(() => {
-  if (!searchText.value) return products
-  
-  const search = searchText.value.toLowerCase()
-  return products.filter(product => 
-    product.name.toLowerCase().includes(search)
-  )
+watch(() => route.query.category, (newCategory) => {
+  if (newCategory) {
+    setFilters({ category: newCategory as ProductCategory })
+  } else {
+    setFilters({ category: null })
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  fetchProducts()
 })
 </script>
