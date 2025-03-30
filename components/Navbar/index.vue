@@ -1,11 +1,7 @@
 <template>
     <div class="fixed w-screen bg-black p-4 flex justify-between items-center z-50">
       <img src="assets/images/ospadaria_logo.png" class="invert h-12" />
-      <component
-        :is="showMenu ? XMarkIcon : Bars3Icon"
-        class="text-white h-8"
-        @click="handleMenu"
-      />
+      <NavbarShowButton v-model="showMenu"/>
     </div>
   
     <Transition
@@ -28,12 +24,8 @@
   </template>
   
   <script setup lang="ts">
-  import { Bars3Icon, XMarkIcon } from '@heroicons/vue/16/solid'
   
   const showMenu = ref(false)
   
-  function handleMenu() {
-    showMenu.value = !showMenu.value
-  }
   </script>
   
