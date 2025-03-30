@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.483.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.13.2",
+    "qrcode-pix": "^5.0.0",
     "shadcn-nuxt": "^1.0.3",
     "typescript": "^5.8.2"
   }
