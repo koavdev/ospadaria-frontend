@@ -1,14 +1,19 @@
 <template>
-    <div class="w-full grid grid-cols-2 gap-3 p-3">
-        <MarketItem v-for="product in products" :product="product"/>
+    <div class="p-3 flex flex-col gap-3">
+        <MarketFilters @update:search="searchText = $event" />
+        <div class="w-full grid grid-cols-2 gap-3">
+            <MarketItem v-for="product in filteredProducts" :product="product"/>
+        </div>    
     </div>
-    
     <MarketCartButton />
 </template>
 
 <script setup lang="ts">
 import Pastelina from "@/assets/images/pastelina.jpg"
 import { type IProduct } from "@/composables/useCart"
+import { ref, computed } from 'vue'
+
+const searchText = ref('')
 
 const products: IProduct[] = [
     { id: 1, name: "Pastelina", price: 4.50, image: Pastelina },
@@ -20,4 +25,13 @@ const products: IProduct[] = [
     { id: 7, name: "Kibe", price: 4.00, image: Pastelina },
     { id: 8, name: "Risole", price: 3.50, image: Pastelina },
 ]
+
+const filteredProducts = computed(() => {
+  if (!searchText.value) return products
+  
+  const search = searchText.value.toLowerCase()
+  return products.filter(product => 
+    product.name.toLowerCase().includes(search)
+  )
+})
 </script>
