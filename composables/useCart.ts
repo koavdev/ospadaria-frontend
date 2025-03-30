@@ -1,14 +1,6 @@
-// useCart.ts
 import { ref, computed } from 'vue'
+import { type IProduct } from '~/lib/types'
 
-export interface IProduct {
-  id: number
-  name: string
-  price: number
-  image: string
-}
-
-// use um cache interno para evitar múltiplas instâncias
 let cartInstance: ReturnType<typeof createCart>
 
 const createCart = () => {
