@@ -33,7 +33,8 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { PlusIcon, TrashIcon } from "lucide-vue-next";
-import { useCart, type IProduct } from "@/composables/useCart";
+import { useCart } from "@/composables/useCart";
+import { type IProduct } from "~/lib/types";
 
 defineOptions({
   name: "CartItemButton"

@@ -5,7 +5,7 @@
     >
     
         <div class="relative bg-gray-200/40 rounded-lg w-full p-2">
-            <div class="absolute bottom-2 right-2 z-[9]">
+            <div class="absolute bottom-2 right-2 z-10">
                 <ItemButton :product="product" />
             </div>
             <img :src="product.image" class="object-cover h-28 mx-auto" />
@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { toRefs } from "vue"
-import { type IProduct } from "@/composables/useCart"
+import { type IProduct } from "@/lib/types"
 import { formatPrice } from "~/lib/formats";
 import ItemButton from "./ItemButton.vue";
 
