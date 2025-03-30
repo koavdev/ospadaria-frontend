@@ -41,18 +41,18 @@ const proxyChecked = computed<boolean>({
 
 .toggle {
   position: relative;
-  width: 34px;
+  width: 24px;
   cursor: pointer;
   margin: auto;
   display: block;
-  height: calc(4px * 3 + 11px * 2);
+  height: calc(1px * 3 + 11px * 2);
 }
 
 .bar {
   position: absolute;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   border-radius: calc(4px / 2);
   background: white;
   color: inherit;
@@ -63,7 +63,7 @@ const proxyChecked = computed<boolean>({
 /***** Tornado Animation *****/
 
 .bar--top {
-  bottom: calc(50% + 11px + 3px/ 2);
+  bottom: calc(50% + 9px - 1px/ 2);
   transition-property: bottom,transform;
   transition-delay: calc(0s + 0.35s) * .6;
 }
@@ -75,7 +75,7 @@ const proxyChecked = computed<boolean>({
 }
 
 .bar--bottom {
-  top: calc(50% + 11px + 3px/ 2);
+  top: calc(50% + 9px - 1px/ 2);
   transition-property: top,transform;
   transition-delay: 0s;
 }
@@ -83,7 +83,7 @@ const proxyChecked = computed<boolean>({
 #checkbox:checked + .toggle .bar--top {
   transform: rotate(-135deg);
   transition-delay: 0s;
-  bottom: calc(50% - 3px/ 2);
+  bottom: calc(50% - 2px/ 2);
 }
 
 #checkbox:checked + .toggle .bar--middle {
@@ -93,7 +93,7 @@ const proxyChecked = computed<boolean>({
 }
 
 #checkbox:checked + .toggle .bar--bottom {
-  top: calc(50% - 3px/ 2);
+  top: calc(50% - 2px/ 2);
   transform: rotate(-225deg);
   transition-delay: calc(0s + 0.35s * .6);
 }

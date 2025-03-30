@@ -1,6 +1,6 @@
 <template>
     <div class="fixed w-screen bg-black p-4 flex justify-between items-center z-50">
-      <img src="assets/images/ospadaria_logo.png" class="invert h-12" />
+      <img src="assets/images/ospadaria_logo.png" class="invert h-8" />
       <NavbarShowButton v-model="showMenu"/>
     </div>
   
@@ -14,7 +14,7 @@
     >
       <div
         v-if="showMenu"
-        class="absolute bg-black w-full top-20 h-[calc(100vh-80px)] text-white p-4 flex flex-col gap-3 justify-center items-center z-40"
+        class="absolute bg-black w-full top-16 h-[calc(100vh-64px)] text-white p-4 flex flex-col gap-3 z-[60] overflow-y-auto"
       >
         <p class="text-[24px]">Cadastre-se</p>
         <p class="text-[24px]">Produtos</p>

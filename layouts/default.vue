@@ -1,7 +1,7 @@
 <template>
     <div class="overflow-x-hidden">
         <Navbar />
-        <div class="pt-20">
+        <div class="pt-14">
             <slot></slot>
         </div>
     </div>
