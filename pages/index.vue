@@ -21,7 +21,7 @@ import { useProducts } from '@/composables/useProducts'
 import type { ProductCategory } from '@/lib/types'
 
 const route = useRoute()
-const { filteredProducts, setFilters, fetchProducts, isLoading } = useProducts()
+const { filteredProducts, setFilters, isLoading } = useProducts()
 
 function updateSearchFilter(text: string) {
   setFilters({ searchText: text })
@@ -34,8 +34,4 @@ watch(() => route.query.category, (newCategory) => {
     setFilters({ category: null })
   }
 }, { immediate: true })
-
-onMounted(() => {
-  fetchProducts()
-})
 </script>
