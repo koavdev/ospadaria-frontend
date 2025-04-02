@@ -12,9 +12,12 @@ export default defineEventHandler(async (event) => {
       throw new Error('Google Sheet ID not configured');
     }
 
-    // Read service account credentials
-    const credentialsPath = path.resolve('./server/google/service-account.json');
-    const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+    // CREDENTIALS NO LOCAL (/server/google/service-account.json)
+    // const credentialsPath = path.resolve('./server/google/service-account.json');
+    // const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+
+    // CREDENTIALS DE PRODUÇÃO (NETLIFY)
+    const credentials = JSON.parse(process.env.SERVICE_ACCOUNT_JSON || '{}')
 
     // Create auth instance
     const auth = new google.auth.GoogleAuth({
