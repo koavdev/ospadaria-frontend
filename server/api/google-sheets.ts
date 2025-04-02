@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     const sheets = google.sheets({ version: 'v4', auth });
 
     // Define range
-    const range = 'Página1!A1:D10';
+    const range = 'Página1!A1:D1000';
 
     // Get data from sheet
     const response = await sheets.spreadsheets.values.get({
