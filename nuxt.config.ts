@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     private: {
       googleSheetId: process.env.PRODUCTS_SPREADSHEET_ID,
+      serviceAccountJson: process.env.SERVICE_ACCOUNT_JSON,
     }
   },
   shadcn: {
