@@ -1,14 +1,21 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt'],
+  nitro: {
+    routeRules: {
+      '/api/**': { cors: true }
+    }
+  },
+  runtimeConfig: {
+    private: {
+      googleSheetId: process.env.PRODUCTS_SPREADSHEET_ID,
+    }
+  },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
     componentDir: './components/ui'
+  },
+  compatibilityDate: '2025-03-30',
+  experimental: {
+    appManifest: false
   }
 })
