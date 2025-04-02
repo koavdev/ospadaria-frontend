@@ -1,18 +1,5 @@
 import { ref, computed, readonly } from 'vue'
 import type { IProductWithCategory, ProductCategory } from '@/lib/types'
-import Pastelina from "@/assets/images/pastelina.jpg?url"
-
-// Mock data - will be replaced with API calls in the future
-const mockProducts: IProductWithCategory[] = [
-  { id: 1, name: "Pastelina", price: 4.50, image: Pastelina, category: 'Pastéis' },
-  { id: 2, name: "Pastel de Carne", price: 6.00, image: Pastelina, category: 'Pastéis' },
-  { id: 3, name: "Pastel de Queijo", price: 5.50, image: Pastelina, category: 'Pastéis' },
-  { id: 4, name: "Pastel de Frango", price: 6.00, image: Pastelina, category: 'Pastéis' },
-  { id: 5, name: "Coxinha", price: 4.00, image: Pastelina, category: 'Salgados' },
-  { id: 6, name: "Esfiha", price: 3.50, image: Pastelina, category: 'Salgados' },
-  { id: 7, name: "Kibe", price: 4.00, image: Pastelina, category: 'Salgados' },
-  { id: 8, name: "Risole", price: 3.50, image: Pastelina, category: 'Salgados' },
-]
 
 // Create a single product store
 const products = ref<IProductWithCategory[]>([])
@@ -55,7 +42,8 @@ const filteredProducts = computed(() => {
   return result
 })
 
-// Function to fetch products from API (will be implemented in the future)
+const { fetchSheetData } = useGoogleSheets()
+
 async function fetchProducts() {
   if (products.value.length > 0) {
     return // Don't fetch if we already have products
@@ -65,12 +53,17 @@ async function fetchProducts() {
   error.value = null
   
   try {
-    // In the future, this will be replaced with an actual API call
-    // For now, just simulate a delay to mimic a network request
-    await new Promise(resolve => setTimeout(resolve, 300))
-    
-    // Mock response (would be replaced with actual API response)
-    products.value = mockProducts
+    const response = await fetchSheetData()
+
+    // Parse the data from Google Sheets
+    const sheetValues = response.values.slice(1) // Skipping the header row
+    products.value = sheetValues.map((row, index) => ({
+      id: index + 1, // Or map this to a real ID if applicable
+      name: row[0],
+      price: parseFloat(row[1]),
+      category: row[2], // Assuming category is in the 3rd column
+      image: row[3] || '', // Assuming the image URL is in the 4th column, or provide a default
+    }))
   } catch (err) {
     error.value = err as Error
     console.error('Error fetching products:', err)

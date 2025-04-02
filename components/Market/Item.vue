@@ -8,7 +8,7 @@
             <div class="absolute bottom-2 right-2 z-10">
                 <ItemButton :product="product" />
             </div>
-            <img :src="product.image" class="object-cover h-28 mx-auto" />
+            <img :src="imageUrl" class="object-cover h-28 mx-auto" />
         </div>
         <div class="flex flex-col justify-between">
             <p class="font-medium z-[9]">{{ formatPrice(product.price) }}</p>
@@ -34,6 +34,8 @@ const props = withDefaults(
   {  }
 )
 const { product } = toRefs(props)
+
+const imageUrl = computed(() => product.value.image)
 
 </script>
 

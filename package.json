@@ -10,10 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.15.2",
     "@heroicons/vue": "^2.2.0",
     "@vueuse/core": "^13.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "googleapis": "^148.0.0",
     "lucide-vue-next": "^0.483.0",
     "nuxt": "^3.16.1",
     "reka-ui": "^2.1.1",
