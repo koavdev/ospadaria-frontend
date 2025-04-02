@@ -54,12 +54,12 @@
               <span class="text-[14px]">Pagar com Pix</span>
               <img :src="PixIcon" class="w-6" />
             </Button>
-            <Button disabled
+            <!-- <Button disabled
               class="bg-white text-black flex items-center justify-center gap-2 p-3"
               @click="setPaymentMethod('bitcoin')">
               <span class="text-[14px]">Pagar com Bitcoin</span>
               <img :src="BitcoinIcon" class="w-6" />
-            </Button>
+            </Button> -->
           </div>
           
           <div v-if="paymentMethod === 'pix'" class="space-y-4">
@@ -108,7 +108,7 @@ const copied = ref(false)
 const pixInputRef = ref<HTMLInputElement | null>(null)
 
 const pixInfo = {
-  key: 'noronha.lurdes@gmail.com', // TODO: substituir pelo e-mail da Lurdes
+  key: 'noronhapicpay@gmail.com',
   name: 'Lourdes Noronha',
   city: 'SAO PAULO',
   message: 'Pagamento Ospadaria',
