@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     // const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
     // CREDENTIALS DE PRODUÇÃO (NETLIFY)
-    const credentials = JSON.parse(process.env.SERVICE_ACCOUNT_JSON || '{}')
+    const credentials = JSON.parse(process.env.SERVICE_ACCOUNT_JSON_B64 || '{}')
 
     // Create auth instance
     const auth = new google.auth.GoogleAuth({
