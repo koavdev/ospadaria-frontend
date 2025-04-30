@@ -1,75 +1,11 @@
-# Nuxt Minimal Starter
+![Alt](https://ospadaria.netlify.app/_nuxt/ospadaria_logo.BCsavZbl.png)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to OSPAdaria.
 
-## Setup
+OSPAdaria is a web application developed with Vue.js and integrated with Google Sheets. The motivation behind this project was to assist Dona Lurdes in managing the bakery by optimizing the time spent labeling and controlling the price of each product, while also delivering a pleasant user experience that speeds up the process from product selection to payment.
 
-Make sure to install dependencies:
+Payments are made via Pix, with support for both dynamic QR codes and Pix Copia e Cola.
 
-```bash
-# npm
-npm install
+Product management is handled through a Google Sheets spreadsheet.
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Live demo: https://ospadaria.netlify.app/
