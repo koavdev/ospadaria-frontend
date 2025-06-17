@@ -1,6 +1,6 @@
 <template>
-    <div class="p-3 flex flex-col gap-3">
-        <MarketFilters @update:search="updateSearchFilter" />
+  <div class="p-3 flex flex-col gap-3">
+    <MarketFilters @update:search="updateSearchFilter" />
         <div v-if="isLoading" class="w-full flex justify-center py-10">
           <p>Carregando produtos...</p>
         </div>
@@ -8,10 +8,11 @@
           <p>Nenhum produto encontrado</p>
         </div>
         <div v-else class="w-full grid grid-cols-2 gap-3">
-            <MarketItem v-for="product in filteredProducts" :key="product.id" :product="product"/>
+          <MarketItem v-for="product in filteredProducts" :key="product.id" :product="product"/>
         </div>    
-    </div>
-    <MarketCartButton />
+      </div>
+      <MarketCartButton />
+  </template>
 </template>
 
 <script setup lang="ts">
