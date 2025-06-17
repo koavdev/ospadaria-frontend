@@ -12,7 +12,6 @@
         </div>    
       </div>
       <MarketCartButton />
-  </template>
 </template>
 
 <script setup lang="ts">
